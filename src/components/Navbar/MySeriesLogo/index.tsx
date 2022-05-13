@@ -1,8 +1,7 @@
-import { NextComponentType } from "next"
-import Link from "next/link"
-import { AppStrings } from '../../util/appStrings'
+import Link from 'next/link'
+import { AppStrings } from '../../../util/appStrings'
 
-const MySeriesLogo: NextComponentType = () => {
+function MySeriesLogo() {
 
   const APP_NAME: string = AppStrings.APP_NAME
   const APP_LOGO: string = AppStrings.APP_LOGO

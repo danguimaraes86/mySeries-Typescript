@@ -1,8 +1,7 @@
-import { NextComponentType } from 'next'
 import { FormEvent, useState } from 'react'
-import { AppStrings } from '../../util/appStrings'
+import { AppStrings } from '../../../util/appStrings'
 
-const SearchForm: NextComponentType = () => {
+function SearchForm() {
 
   const SEARCH_ICON: string = AppStrings.SEARCH_ICON
 
@@ -14,7 +13,7 @@ const SearchForm: NextComponentType = () => {
   }
 
   return (
-    <form className='form-inline flex-fill' onSubmit={e => handleSubmit(e)} >
+    <form className='form-inline flex-fill' onSubmit={e => handleSubmit(e)}>
       <div className='input-group'>
         <input
           id='searchSeries'
@@ -24,9 +23,8 @@ const SearchForm: NextComponentType = () => {
           value={searchValue}
           onChange={e => {
             setSearchValue(e.target.value)
-          }}
-        />
-        <button type='submit' className='btn input-group-text bg-info border-info' >
+          } } />
+        <button type='submit' className='btn input-group-text bg-info border-info'>
           <i className={SEARCH_ICON} />
         </button>
       </div>
