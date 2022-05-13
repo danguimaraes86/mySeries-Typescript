@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const instance = axios.create({
+const customAxios = axios.create({
   baseURL: process.env.TMDB_BASEURL,
   headers: {
     'Authorization': `Bearer ${process.env.TMDB_APIKEY}`
@@ -8,7 +8,7 @@ const instance = axios.create({
 });
 
 export async function fetchTrendingSeries(url: string) {
-  const { data } = await instance({
+  const { data } = await customAxios({
     method: 'GET',
     url: url,
     params: { language: 'pt-BR' }
