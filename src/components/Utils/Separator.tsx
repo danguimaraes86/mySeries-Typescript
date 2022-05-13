@@ -1,6 +1,4 @@
-import { NextComponentType } from "next"
-
-const Separator: NextComponentType = () => {
+function Separator() {
   return <div className='d-none d-md-inline-block flex-fill' />
 }
 
