@@ -1,11 +1,14 @@
 import Image from 'next/image'
+import appIcons from '../util/AppIcons'
 
 export function handleSeriesPoster(posterPath: string, name: string) {
+
+  const NO_POSTER_ICON = appIcons.NO_POSTER_ICON
 
   if (!posterPath) {
     return (
       <div className='card-img-top d-flex justify-content-center align-items-center bg-secondary h-100'>
-        <i className='bi bi-image text-info ' style={{ fontSize: '6em' }} />
+        <i className={NO_POSTER_ICON} style={{ fontSize: '6em' }} />
       </div>
     )
   }

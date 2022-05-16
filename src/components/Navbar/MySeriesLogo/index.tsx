@@ -1,10 +1,11 @@
 import Link from 'next/link'
-import { AppStrings } from '../../../util/appStrings'
+import appIcons from '../../../util/AppIcons'
+import appStrings from '../../../util/appStrings'
 
 function MySeriesLogo() {
 
-  const APP_NAME: string = AppStrings.APP_NAME
-  const APP_LOGO: string = AppStrings.APP_LOGO
+  const APP_NAME: string = appStrings.APP_NAME
+  const APP_LOGO: string = appIcons.APP_LOGO
 
   return (
     <Link href='/'>

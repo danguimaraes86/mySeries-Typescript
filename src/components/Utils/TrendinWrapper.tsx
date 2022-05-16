@@ -1,4 +1,4 @@
-import { AppStrings } from '../../util/appStrings'
+import appStrings from "../../util/appStrings"
 
 type Props = {
   children?: JSX.Element[]
@@ -6,7 +6,7 @@ type Props = {
 
 function TrendinWrapper ({ children }: Props) {
 
-  const TRENDING_TITTLE = AppStrings.TRENDING_TITTLE
+  const TRENDING_TITTLE = appStrings.TRENDING_TITTLE
 
   return (
     <main className='border rounded-top p-3 mt-2'>

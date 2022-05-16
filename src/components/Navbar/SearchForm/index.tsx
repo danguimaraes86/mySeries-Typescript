@@ -1,9 +1,9 @@
 import { FormEvent, useState } from 'react'
-import { AppStrings } from '../../../util/appStrings'
+import appIcons from '../../../util/AppIcons'
 
 function SearchForm() {
 
-  const SEARCH_ICON: string = AppStrings.SEARCH_ICON
+  const SEARCH_ICON: string = appIcons.SEARCH_ICON
 
   const [searchValue, setSearchValue] = useState<string>('')
 

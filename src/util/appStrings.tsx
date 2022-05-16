@@ -1,6 +1,6 @@
-export const AppStrings = {
+const appStrings = {
   APP_NAME: 'mySeries',
-  APP_LOGO: 'bi bi-display',
-  SEARCH_ICON: 'bi bi-search',
   TRENDING_TITTLE: 'Em Alta'
 }
+
+export default appStrings

@@ -1,13 +1,16 @@
 import Link from 'next/link'
-import { SeriesCardType } from '../../interfaces/SeriesModels'
+import { CardDetails } from '../../interfaces/CardDetails'
 import { getYear } from '../../libs/dateParsing'
 import { handleSeriesPoster } from '../../libs/handleSeriesPoster'
+import appIcons from '../../util/AppIcons'
 
 type Props = {
-  details: SeriesCardType
+  series: CardDetails
 }
 
-function SeriesCard({ details: series }: Props) {
+function SeriesCard({ series }: Props) {
+
+  const MORE_DETAILS_ICON: string = appIcons.MORE_DETAILS_ICON
 
   return (
     <div className='col col-12 col-sm-6 col-md-4 col-lg-3'>
@@ -22,7 +25,7 @@ function SeriesCard({ details: series }: Props) {
         }}>
           <a className='text-decoration-none'>
             <div className='card-footer bg-dark'>
-              <small className='text-info'>Mais detalhes <i className='bi bi-arrow-up-right-square-fill' /></small>
+              <small className='text-info'>Mais detalhes <i className={MORE_DETAILS_ICON} /></small>
             </div>
           </a>
         </Link>
