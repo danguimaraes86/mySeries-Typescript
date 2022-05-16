@@ -17,8 +17,8 @@ function SeriesCard({ details: series }: Props) {
           <h5 className='card-title'>{`${series.name} ${getYear(series.year)}`}</h5>
         </div>
         <Link href={{
-          // pathname: '/series/[id]',
-          // query: { id: id }
+          pathname: '/series/[id]',
+          query: { id: series.id }
         }}>
           <a className='text-decoration-none'>
             <div className='card-footer bg-dark'>
