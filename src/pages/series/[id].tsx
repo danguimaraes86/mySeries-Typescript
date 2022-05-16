@@ -4,7 +4,11 @@ import LeftColumn from '../../components/Utils/DetailsWrapper/LeftColumn'
 import RightColumn from '../../components/Utils/DetailsWrapper/RightColumn'
 import { fetchSeriesDetails } from '../../libs/fetcher'
 
-function SeriesDetails({ series }) {
+type Props = {
+  series: any
+}
+
+function SeriesDetails({ series }: Props) {
 
   console.log(series)
 
