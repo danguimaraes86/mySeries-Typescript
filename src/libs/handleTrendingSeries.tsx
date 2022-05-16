@@ -1,21 +1,13 @@
 import SeriesCard from '../components/SeriesCard'
-import { SeriesCardType } from '../interfaces/SeriesModels'
+import { CardDetails } from '../interfaces/CardDetails'
 
-export function handleTrendingSeries(trending: Object[]) {
+export function handleTrendingSeries(trending: CardDetails[]) {
   return (
-    trending.map((series: any) => {
-
-      const details: SeriesCardType = {
-        id: series.id,
-        name: series.name,
-        poster: series.poster_path,
-        year: series.first_air_date
-      }
-
+    trending.map((series) => {
       return (
         <SeriesCard
           key={series.id}
-          details={details}
+          series={series}
         />
       )
     })
