@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import appIcons from '../util/appIcons'
 
-export function handleSeriesPoster(posterPath: string, name: string) {
+export function handleSeriesPoster(posterPath: string, seriesName: string) {
 
   const NO_POSTER_ICON = appIcons.NO_POSTER_ICON
 
@@ -19,7 +19,7 @@ export function handleSeriesPoster(posterPath: string, name: string) {
       width={500}
       height={800}
       className='card-img-top'
-      alt={`poster da série ${name}`}
+      alt={`poster da série ${seriesName}`}
     />
   )
 

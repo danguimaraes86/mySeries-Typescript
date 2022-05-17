@@ -21,7 +21,7 @@ function Home({ trending }: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const trending = await fetchTrendingSeries('/trending/tv/week')
+  const trending = await fetchTrendingSeries()
 
   return {
     props: { trending }

@@ -1,10 +1,10 @@
 import { CardDetails } from '../interfaces/CardDetails';
 import customAxios from './customAxios';
 
-export async function fetchTrendingSeries(url: string): Promise<CardDetails> {
+export async function fetchTrendingSeries(): Promise<CardDetails> {
   const { data } = await customAxios({
     method: 'GET',
-    url: url,
+    url: '/trending/tv/week',
   })
   const trending: CardDetails = data.results.map((series: any): CardDetails => {
     return {
