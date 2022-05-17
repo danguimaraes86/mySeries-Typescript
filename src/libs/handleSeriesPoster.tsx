@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import appIcons from '../util/AppIcons'
+import appIcons from '../util/appIcons'
 
 export function handleSeriesPoster(posterPath: string, name: string) {
 

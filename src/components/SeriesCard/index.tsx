@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { CardDetails } from '../../interfaces/CardDetails'
 import { getYear } from '../../libs/dateParsing'
 import { handleSeriesPoster } from '../../libs/handleSeriesPoster'
-import appIcons from '../../util/AppIcons'
+import appIcons from '../../util/appIcons'
 
 type Props = {
   series: CardDetails

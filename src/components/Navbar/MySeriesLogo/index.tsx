@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import appIcons from '../../../util/AppIcons'
+import appIcons from '../../../util/appIcons'
 import appStrings from '../../../util/appStrings'
 
 function MySeriesLogo() {

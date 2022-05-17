@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react'
-import appIcons from '../../../util/AppIcons'
+import appIcons from '../../../util/appIcons'
 
 function SearchForm() {
 
