@@ -1,14 +1,14 @@
-import { Networks } from "./Networks";
-import { Providers } from "./Providers";
 import { CardDetails } from "./CardDetails";
+import { Network } from "./Network";
+import { StreamingProvider } from "./StreamingProvider";
 
-export interface SeriesDetailsType extends CardDetails {
+export interface SeriesDetails extends CardDetails {
   original_language: string,
   original_name: string,
   overview: string,
   type: string,
   status: string,
   number_of_seasons: number,
-  networks: Networks[],
-  providers: Providers[]
+  networks: Network[],
+  providers: StreamingProvider[]
 }
