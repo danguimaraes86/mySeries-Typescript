@@ -1,7 +1,7 @@
 import { CardDetails } from '../interfaces/CardDetails';
 import customAxios from './customAxios';
 
-export async function fetchTrendingSeries(url: string) {
+export async function fetchTrendingSeries(url: string): Promise<CardDetails> {
   const { data } = await customAxios({
     method: 'GET',
     url: url,
@@ -17,13 +17,22 @@ export async function fetchTrendingSeries(url: string) {
   return trending
 }
 
-export async function fetchSeriesDetails(url: string, params: object ){
+export async function fetchSeriesDetails(id: string | string[] | undefined) {
+  const { data: series } = await customAxios({
+    method: 'GET',
+    url: `/tv/${id}`,
+    params: { append_to_response: 'external_ids' }
+  })
+  const providers = await fetchSeriesProviders(id)
+  series['providers'] = providers
+
+  return series
+}
+
+async function fetchSeriesProviders(id: string | string[] | undefined) {
   const { data } = await customAxios({
     method: 'GET',
-    url: url,
-    params: params
+    url: `/tv/${id}/watch/providers`,
   })
-  console.log(data);
-  
-  return data
+  return data.results.hasOwnProperty('BR') ? data.results.BR : []
 }
