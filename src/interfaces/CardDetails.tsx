@@ -1,5 +1,5 @@
 export interface CardDetails {
-  id: number,
+  id: string,
   name: string,
   poster: string,
   year: string
