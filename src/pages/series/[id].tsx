@@ -1,35 +1,36 @@
-import type { GetServerSideProps } from 'next'
+import { useRouter } from 'next/router'
 import DetailsWrapper from '../../components/Utils/DetailsWrapper'
 import LeftColumn from '../../components/Utils/DetailsWrapper/LeftColumn'
 import RightColumn from '../../components/Utils/DetailsWrapper/RightColumn'
-import { SeriesDetails } from '../../interfaces/SeriesDetails'
-import handleSeriesDetails from '../../libs/handleSeriesDetails'
+import Spinner from '../../components/Utils/Spinner'
+import { useSeriesDetails } from '../../hooks/useSeriesDetails'
 
-type Props = {
-  series: SeriesDetails,
-}
+function SeriesDetails() {
+  const router = useRouter()
+  const { id } = router.query
 
-function SeriesDetails({ series }: Props) {
+  const { seriesDetails, error } = useSeriesDetails(id as string)
+
+  function handleLoading() {
+    if (!seriesDetails && !error) return <Spinner />
+    return (
+      <>
+        <LeftColumn>
+          {seriesDetails.name}
+        </LeftColumn>
+
+        <RightColumn>
+          {seriesDetails.id}
+        </RightColumn>
+      </>
+    )
+  }
+
   return (
     <DetailsWrapper>
-      <LeftColumn>
-        {series.name}
-      </LeftColumn>
-
-      <RightColumn>
-        {series.id}
-      </RightColumn>
+      {handleLoading()}
     </DetailsWrapper>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { id } = context.query
-  const series = await handleSeriesDetails(id)
-
-  return {
-    props: { series }
-  }
 }
 
 export default SeriesDetails
