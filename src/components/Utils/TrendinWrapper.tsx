@@ -1,7 +1,7 @@
 import appStrings from "../../util/appStrings"
 
 type Props = {
-  children?: JSX.Element[]
+  children?: JSX.Element[] | JSX.Element
 }
 
 function TrendinWrapper ({ children }: Props) {

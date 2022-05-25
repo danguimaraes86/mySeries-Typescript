@@ -9,5 +9,5 @@ export default function DetailsWrapper({ children }: Props) {
 }
 
 type Props = {
-  children: JSX.Element[]
+  children: JSX.Element[] | JSX.Element
 }
