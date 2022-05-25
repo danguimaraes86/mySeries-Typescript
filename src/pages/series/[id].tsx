@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import DetailsWrapper from '../../components/Utils/DetailsWrapper'
 import LeftColumn from '../../components/Utils/DetailsWrapper/LeftColumn'
 import RightColumn from '../../components/Utils/DetailsWrapper/RightColumn'
@@ -9,10 +10,15 @@ function SeriesDetails() {
   const router = useRouter()
   const { id } = router.query
 
+  const [loading, setLoading] = useState(true)
   const { seriesDetails, error } = useSeriesDetails(id as string)
 
-  function handleLoading() {
-    if (!seriesDetails && !error) return <Spinner />
+  useEffect(() => {
+    (!seriesDetails && !error) ? setLoading(true) : setLoading(false)
+  }, [seriesDetails, error])
+
+  function handleLoading(): JSX.Element {
+    if (loading) return <Spinner />
     return (
       <>
         <LeftColumn>
