@@ -6,7 +6,7 @@ export function useTrending() {
   const { data, error } = useSWR('/api/trending', fetcher)
 
   let trending: CardDetails[] = []
-  if(data){
+  if (data) {
     trending = data.results.map((series: any): CardDetails => {
       return {
         id: series.id,

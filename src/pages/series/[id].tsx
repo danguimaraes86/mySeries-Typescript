@@ -17,24 +17,19 @@ function SeriesDetails() {
     (!seriesDetails && !error) ? setLoading(true) : setLoading(false)
   }, [seriesDetails, error])
 
-  function handleLoading(): JSX.Element {
-    if (loading) return <Spinner />
-    return (
-      <>
-        <LeftColumn>
-          {seriesDetails.name}
-        </LeftColumn>
-
-        <RightColumn>
-          {seriesDetails.id}
-        </RightColumn>
-      </>
-    )
-  }
-
   return (
     <DetailsWrapper>
-      {handleLoading()}
+      {loading ? <Spinner /> :
+        <>
+          <LeftColumn>
+            {seriesDetails.name}
+          </LeftColumn>
+
+          <RightColumn>
+            {seriesDetails.id}
+          </RightColumn>
+        </>
+      }
     </DetailsWrapper>
   )
 }

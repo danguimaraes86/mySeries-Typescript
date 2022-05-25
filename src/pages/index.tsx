@@ -14,25 +14,20 @@ function Home() {
     (!trending && !error) ? setLoading(true) : setLoading(false)
   }, [trending, error])
 
-  function handleLoading(): JSX.Element | JSX.Element[] {
-    if (loading) return <Spinner />
-    return (
-      trending.map((series) => {
-        return (
-          <SeriesCard
-            key={series.id}
-            series={series}
-          />
-        )
-      })
-    )
-  }
-
   return (
     <>
       <Navbar />
       <TrendinWrapper>
-        {handleLoading()}
+        {loading ? <Spinner /> :
+          trending.map((series) => {
+            return (
+              <SeriesCard
+                key={series.id}
+                series={series}
+              />
+            )
+          })
+        }
       </TrendinWrapper>
     </>
   )
