@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import Navbar from '../../components/Navbar'
 import FavoriteButton from '../../components/SeriesDetails/FavoriteButton'
 import PosterCard from '../../components/SeriesDetails/PosterCard'
 import DetailsWrapper from '../../components/Utils/DetailsWrapper'
@@ -20,23 +21,26 @@ function SeriesDetails() {
   }, [seriesDetails, error])
 
   return (
-    <DetailsWrapper>
-      {loading ? <Spinner /> :
-        <>
-          <LeftColumn>
-            <PosterCard
-              url={`https://image.tmdb.org/t/p/w500/${seriesDetails.poster}`}
-              name={seriesDetails.name}
-            />
-            <FavoriteButton />
-          </LeftColumn>
+    <>
+      <Navbar />
+      <DetailsWrapper>
+        {loading ? <Spinner /> :
+          <>
+            <LeftColumn>
+              <PosterCard
+                posterPath={seriesDetails.poster}
+                name={seriesDetails.name}
+              />
+              <FavoriteButton />
+            </LeftColumn>
 
-          <RightColumn>
-            {seriesDetails.id}
-          </RightColumn>
-        </>
-      }
-    </DetailsWrapper>
+            <RightColumn>
+              {seriesDetails.id}
+            </RightColumn>
+          </>
+        }
+      </DetailsWrapper>
+    </>
   )
 }
 
