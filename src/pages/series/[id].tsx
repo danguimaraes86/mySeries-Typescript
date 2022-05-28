@@ -1,5 +1,7 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import FavoriteButton from '../../components/SeriesDetails/FavoriteButton'
+import PosterCard from '../../components/SeriesDetails/PosterCard'
 import DetailsWrapper from '../../components/Utils/DetailsWrapper'
 import LeftColumn from '../../components/Utils/DetailsWrapper/LeftColumn'
 import RightColumn from '../../components/Utils/DetailsWrapper/RightColumn'
@@ -22,7 +24,11 @@ function SeriesDetails() {
       {loading ? <Spinner /> :
         <>
           <LeftColumn>
-            {seriesDetails.name}
+            <PosterCard
+              url={`https://image.tmdb.org/t/p/w500/${seriesDetails.poster}`}
+              name={seriesDetails.name}
+            />
+            <FavoriteButton />
           </LeftColumn>
 
           <RightColumn>

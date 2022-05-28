@@ -9,5 +9,5 @@ export default function LeftColumn({ children }: Props) {
 }
 
 type Props = {
-  children: JSX.Element | string
+  children: JSX.Element[]
 }
