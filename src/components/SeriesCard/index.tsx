@@ -17,7 +17,7 @@ function SeriesCard({ series }: Props) {
       <div className='card h-100'>
         {handleSeriesPoster(series.poster, series.name)}
         <div className='card-body'>
-          <h5 className='card-title'>{`${series.name} ${getYear(series.year)}`}</h5>
+          <h5 className='card-title'>{`${series.name} ${getYear(series.airDate)}`}</h5>
         </div>
         <Link href={{
           pathname: '/series/[id]',

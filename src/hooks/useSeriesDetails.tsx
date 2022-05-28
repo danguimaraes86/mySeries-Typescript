@@ -20,7 +20,7 @@ export function useSeriesDetails(id: string) {
     id: "",
     name: "",
     poster: "",
-    year: ""
+    airDate: ""
   }
 
   if (data) {
@@ -28,7 +28,7 @@ export function useSeriesDetails(id: string) {
       id: data.id,
       name: data.name,
       poster: data.poster_path,
-      year: data.first_air_date,
+      airDate: data.first_air_date,
       original_language: data.original_language,
       original_name: data.original_name,
       overview: data.overview,

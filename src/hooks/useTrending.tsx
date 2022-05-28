@@ -12,7 +12,7 @@ export function useTrending() {
         id: series.id,
         name: series.name,
         poster: series.poster_path,
-        year: series.first_air_date
+        airDate: series.first_air_date
       }
     })
   }
