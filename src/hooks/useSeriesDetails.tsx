@@ -1,32 +1,50 @@
+import { useEffect, useState } from "react";
+import useSWR from "swr";
 import { Network } from "../interfaces/Network";
 import { SeriesDetails } from "../interfaces/SeriesDetails";
 import { StreamingProvider } from "../interfaces/StreamingProvider";
 import { fetcher } from "../libs/fetcher";
 
-export async function useSeriesDetails(id: string) {
+export function useSeriesDetails(id: string) {
 
-  const series = await fetcher(`/tv/${id}`, { append_to_response: 'external_ids' })
-  const { results: providers } = await fetcher(`/tv/${id}/watch/providers`)
-  series['providers'] = providers.hasOwnProperty('BR') ? providers.BR : []
+  const [seriesDetails, setSeriesDetails] = useState<SeriesDetails>({
+    id: '',
+    name: '',
+    poster: '',
+    airDate: '',
+    original_language: '',
+    original_name: '',
+    overview: '',
+    type: '',
+    status: '',
+    number_of_seasons: 0,
+    networks: [],
+    providers: []
+  })
+  const [loading, setLoading] = useState<boolean>(true)
+  const { data } = useSWR(`/api/series/${id}`, fetcher)
 
-  const seriesDetails: SeriesDetails = {
-    id: series.id,
-    name: series.name,
-    poster: series.poster_path,
-    airDate: series.first_air_date,
-    original_language: series.original_language,
-    original_name: series.original_name,
-    overview: series.overview,
-    type: series.type,
-    status: series.status,
-    number_of_seasons: series.number_of_seasons,
-    networks: handleNetworks(series.networks),
-    providers: handleStreamingProviders(series.providers),
-  }
+  useEffect(() => {
+    if (!data) return setLoading(true)
+    setSeriesDetails({
+      id: data.id,
+      name: data.name,
+      poster: data.poster_path,
+      airDate: data.first_air_date,
+      original_language: data.original_language,
+      original_name: data.original_name,
+      overview: data.overview,
+      type: data.type,
+      status: data.status,
+      number_of_seasons: data.number_of_seasons,
+      networks: handleNetworks(data.networks),
+      providers: handleStreamingProviders(data.providers),
+    })
+    setLoading(false)
+  }, [data])
 
-  return seriesDetails
+  return { seriesDetails, loading }
 }
-
 
 function handleNetworks(networks: []): Network[] {
   return networks.map((network: Network) => {
