@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import SeriesCard from '../components/SeriesCard'
 import Spinner from '../components/Utils/Spinner'
@@ -7,12 +6,7 @@ import { useTrending } from '../hooks/useTrending'
 
 function Home() {
 
-  const [loading, setLoading] = useState(true)
-  const { trending, error } = useTrending()
-
-  useEffect(() => {
-    (!trending && !error) ? setLoading(true) : setLoading(false)
-  }, [trending, error])
+  const { trending, loading } = useTrending()
 
   return (
     <>
