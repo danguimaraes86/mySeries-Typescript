@@ -1,46 +1,30 @@
-import useSWR from "swr";
 import { Network } from "../interfaces/Network";
 import { SeriesDetails } from "../interfaces/SeriesDetails";
 import { StreamingProvider } from "../interfaces/StreamingProvider";
 import { fetcher } from "../libs/fetcher";
 
-export function useSeriesDetails(id: string) {
+export async function useSeriesDetails(id: string) {
 
-  const { data, error } = useSWR(`/api/series/${id}`, fetcher)
+  const series = await fetcher(`/tv/${id}`, { append_to_response: 'external_ids' })
+  const { results: providers } = await fetcher(`/tv/${id}/watch/providers`)
+  series['providers'] = providers.hasOwnProperty('BR') ? providers.BR : []
 
-  let seriesDetails: SeriesDetails = {
-    original_language: "",
-    original_name: "",
-    overview: "",
-    type: "",
-    status: "",
-    number_of_seasons: 0,
-    networks: [],
-    providers: [],
-    id: "",
-    name: "",
-    poster: "",
-    airDate: ""
+  const seriesDetails: SeriesDetails = {
+    id: series.id,
+    name: series.name,
+    poster: series.poster_path,
+    airDate: series.first_air_date,
+    original_language: series.original_language,
+    original_name: series.original_name,
+    overview: series.overview,
+    type: series.type,
+    status: series.status,
+    number_of_seasons: series.number_of_seasons,
+    networks: handleNetworks(series.networks),
+    providers: handleStreamingProviders(series.providers),
   }
 
-  if (data) {
-    seriesDetails = {
-      id: data.id,
-      name: data.name,
-      poster: data.poster_path,
-      airDate: data.first_air_date,
-      original_language: data.original_language,
-      original_name: data.original_name,
-      overview: data.overview,
-      type: data.type,
-      status: data.status,
-      number_of_seasons: data.number_of_seasons,
-      networks: handleNetworks(data.networks),
-      providers: handleStreamingProviders(data.providers),
-    }
-  }
-
-  return { seriesDetails, error }
+  return seriesDetails
 }
 
 
