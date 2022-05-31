@@ -1,3 +1,7 @@
+type Props = {
+  children: JSX.Element | JSX.Element[]
+}
+
 export default function RightColumn({ children }: Props) {
   return (
     <div className='col'>
@@ -6,8 +10,4 @@ export default function RightColumn({ children }: Props) {
       </div>
     </div>
   )
-}
-
-type Props = {
-  children: JSX.Element | JSX.Element[]
 }

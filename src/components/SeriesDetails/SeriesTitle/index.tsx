@@ -1,4 +1,11 @@
-function SeriesTitle({ name, original_name, original_language, year }: Props) {
+type Props = {
+  name: string,
+  original_name: string,
+  original_language: string,
+  year: string
+}
+
+export default function SeriesTitle({ name, original_name, original_language, year }: Props) {
   return (
     <div className='col-12 mb-4'>
       <span className='display-5'>
@@ -11,12 +18,3 @@ function SeriesTitle({ name, original_name, original_language, year }: Props) {
     </div>
   )
 }
-
-type Props = {
-  name: string,
-  original_name: string,
-  original_language: string,
-  year: string
-}
-
-export default SeriesTitle

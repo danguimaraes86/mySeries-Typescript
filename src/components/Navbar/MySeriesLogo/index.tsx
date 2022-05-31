@@ -2,7 +2,7 @@ import Link from 'next/link'
 import appIcons from '../../../util/appIcons'
 import appStrings from '../../../util/appStrings'
 
-function MySeriesLogo() {
+export default function MySeriesLogo() {
 
   const APP_NAME: string = appStrings.APP_NAME
   const APP_LOGO: string = appIcons.APP_LOGO
@@ -16,5 +16,3 @@ function MySeriesLogo() {
     </Link>
   )
 }
-
-export default MySeriesLogo

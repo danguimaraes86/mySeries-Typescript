@@ -1,6 +1,14 @@
 import { dateLocale } from '../../../libs/dateParsing'
 
-function SeriesOverview({ overview, type, first_air_date, number_of_seasons, status }: Props) {
+type Props = {
+  overview: string,
+  type: string,
+  first_air_date: string,
+  number_of_seasons: number,
+  status: string
+}
+
+export default function SeriesOverview({ overview, type, first_air_date, number_of_seasons, status }: Props) {
 
   return (
     <div className='col-12 mb-2'>
@@ -34,13 +42,3 @@ function SeriesOverview({ overview, type, first_air_date, number_of_seasons, sta
     </div>
   )
 }
-
-type Props = {
-  overview: string,
-  type: string,
-  first_air_date: string,
-  number_of_seasons: number,
-  status: string
-}
-
-export default SeriesOverview

@@ -1,4 +1,4 @@
-function Spinner() {
+export default function Spinner() {
   return (
     <div className='col-12'>
       <div className='spinner-border' role='status'>
@@ -6,6 +6,4 @@ function Spinner() {
       </div>
     </div>
   )
-
 }
-export default Spinner
