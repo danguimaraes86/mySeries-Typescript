@@ -1,17 +1,19 @@
-import { Network } from "../interfaces/Network"
-import { SeriesDetails } from "../interfaces/SeriesDetails"
-import { StreamingProvider } from "../interfaces/StreamingProvider"
-import { fetchSeriesDetails } from "./fetcher"
+import { Network } from "../interfaces/Network";
+import { SeriesDetails } from "../interfaces/SeriesDetails";
+import { StreamingProvider } from "../interfaces/StreamingProvider";
+import { fetcher } from "../libs/fetcher";
 
-export default async function handleSeriesDetails(id: string | string[] | undefined): Promise<SeriesDetails> {
+export async function useSeriesDetails(id: string) {
 
-  const series = await fetchSeriesDetails(id)
+  const series = await fetcher(`/tv/${id}`, { append_to_response: 'external_ids' })
+  const { results: providers } = await fetcher(`/tv/${id}/watch/providers`)
+  series['providers'] = providers.hasOwnProperty('BR') ? providers.BR : []
 
-  const serisDetails: SeriesDetails = {
+  const seriesDetails: SeriesDetails = {
     id: series.id,
     name: series.name,
     poster: series.poster_path,
-    year: series.first_air_date,
+    airDate: series.first_air_date,
     original_language: series.original_language,
     original_name: series.original_name,
     overview: series.overview,
@@ -22,8 +24,9 @@ export default async function handleSeriesDetails(id: string | string[] | undefi
     providers: handleStreamingProviders(series.providers),
   }
 
-  return serisDetails
+  return seriesDetails
 }
+
 
 function handleNetworks(networks: []): Network[] {
   return networks.map((network: Network) => {
@@ -35,7 +38,7 @@ function handleNetworks(networks: []): Network[] {
 }
 
 function handleStreamingProviders(providers: any): StreamingProvider[] {
-  if(providers.length === 0) return []
+  if (providers.length === 0) return []
 
   let result: StreamingProvider[] = []
   if (providers.hasOwnProperty('flatrate')) {

@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react'
 import appIcons from '../../../util/appIcons'
 
-function SearchForm() {
+export default function SearchForm() {
 
   const SEARCH_ICON: string = appIcons.SEARCH_ICON
 
@@ -23,7 +23,7 @@ function SearchForm() {
           value={searchValue}
           onChange={e => {
             setSearchValue(e.target.value)
-          } } />
+          }} />
         <button type='submit' className='btn input-group-text bg-info border-info'>
           <i className={SEARCH_ICON} />
         </button>
@@ -31,5 +31,3 @@ function SearchForm() {
     </form>
   )
 }
-
-export default SearchForm

@@ -1,31 +1,30 @@
-import type { GetServerSideProps } from 'next'
 import Navbar from '../components/Navbar'
+import SeriesCard from '../components/SeriesCard'
+import Spinner from '../components/Utils/Spinner'
 import TrendinWrapper from '../components/Utils/TrendinWrapper'
-import { CardDetails } from '../interfaces/CardDetails'
-import { fetchTrendingSeries } from '../libs/fetcher'
-import { handleTrendingSeries } from '../libs/handleTrendingSeries'
+import { useTrending } from '../hooks/useTrending'
 
-type Props = {
-  trending: CardDetails[]
-}
+function Home() {
 
-function Home({ trending }: Props) {
+  const { trending, loading } = useTrending()
+
   return (
     <>
       <Navbar />
       <TrendinWrapper>
-        {handleTrendingSeries(trending)}
+        {loading ? <Spinner /> :
+          trending.map((series) => {
+            return (
+              <SeriesCard
+                key={series.id}
+                series={series}
+              />
+            )
+          })
+        }
       </TrendinWrapper>
     </>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const trending = await fetchTrendingSeries()
-
-  return {
-    props: { trending }
-  }
 }
 
 export default Home

@@ -1,10 +1,10 @@
 import appStrings from "../../util/appStrings"
 
 type Props = {
-  children?: JSX.Element[]
+  children?: JSX.Element | JSX.Element[]
 }
 
-function TrendinWrapper ({ children }: Props) {
+export default function TrendinWrapper ({ children }: Props) {
 
   const TRENDING_TITTLE = appStrings.TRENDING_TITTLE
 
@@ -19,5 +19,3 @@ function TrendinWrapper ({ children }: Props) {
     </main>
   )
 }
-
-export default TrendinWrapper

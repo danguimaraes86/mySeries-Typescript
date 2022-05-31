@@ -2,5 +2,5 @@ export interface CardDetails {
   id: string,
   name: string,
   poster: string,
-  year: string
+  airDate: string
 }
