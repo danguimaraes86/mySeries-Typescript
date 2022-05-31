@@ -1,0 +1,12 @@
+import appIcons from "../../../util/appIcons"
+
+export default function FavoriteButton() {
+  const FAVORITE_ICON = appIcons.FAVORITE_ICON
+
+  return (
+    <button className='btn btn-outline-dark w-100'>
+      <span className='d-none d-md-inline-block me-1'>Favorito</span>
+      <i className={FAVORITE_ICON} />
+    </button>
+  )
+}
