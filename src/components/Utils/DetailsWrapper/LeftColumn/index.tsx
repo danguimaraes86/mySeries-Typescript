@@ -5,7 +5,9 @@ export default function LeftColumn({ children }: Props) {
   return (
     <div className='col-3'>
       <div className='row'>
-        {children}
+        <div className='col-12'>
+          {children}
+        </div>
       </div>
     </div>
   )

@@ -18,9 +18,7 @@ function SeriesDetails({ seriesDetails }: { seriesDetails: SeriesDetails }) {
       <Navbar />
       <DetailsWrapper>
         <LeftColumn>
-          <div className='col-12'>
-            {handleSeriesPoster(seriesDetails.poster, seriesDetails.name, 'details')}
-          </div>
+          {handleSeriesPoster(seriesDetails.poster, seriesDetails.name, 'details')}
           <FavoriteButton />
         </LeftColumn>
 
