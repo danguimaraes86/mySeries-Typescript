@@ -1,7 +1,6 @@
 import { GetServerSideProps } from 'next'
 import Navbar from '../../components/Navbar'
 import FavoriteButton from '../../components/SeriesDetails/FavoriteButton'
-import PosterCard from '../../components/SeriesDetails/PosterCard'
 import SeriesOverview from '../../components/SeriesDetails/SeriesOverview'
 import SeriesTitle from '../../components/SeriesDetails/SeriesTitle'
 import DetailsWrapper from '../../components/Utils/DetailsWrapper'
@@ -10,6 +9,7 @@ import RightColumn from '../../components/Utils/DetailsWrapper/RightColumn'
 import { useSeriesDetails as loadSeriesDetails } from '../../hooks/useSeriesDetails'
 import { SeriesDetails } from '../../interfaces/SeriesDetails'
 import { getYear } from '../../libs/dateParsing'
+import { handleSeriesPoster } from '../../libs/handleSeriesPoster'
 
 function SeriesDetails({ seriesDetails }: { seriesDetails: SeriesDetails }) {
 
@@ -18,10 +18,9 @@ function SeriesDetails({ seriesDetails }: { seriesDetails: SeriesDetails }) {
       <Navbar />
       <DetailsWrapper>
         <LeftColumn>
-          <PosterCard
-            posterPath={seriesDetails.poster}
-            name={seriesDetails.name}
-          />
+          <div className='col-12'>
+            {handleSeriesPoster(seriesDetails.poster, seriesDetails.name, 'details')}
+          </div>
           <FavoriteButton />
         </LeftColumn>
 
