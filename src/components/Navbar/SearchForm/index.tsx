@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { FormEvent, useState } from 'react'
 import appIcons from '../../../util/appIcons'
 
@@ -5,15 +6,22 @@ export default function SearchForm() {
 
   const SEARCH_ICON: string = appIcons.SEARCH_ICON
 
+  const router = useRouter()
   const [searchValue, setSearchValue] = useState<string>('')
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
-    console.log(searchValue)
+    router.push({
+      pathname: '/search',
+      query: { value: searchValue }
+    })
   }
 
   return (
-    <form className='form-inline flex-fill' onSubmit={e => handleSubmit(e)}>
+    <form
+      className='form-inline flex-fill'
+      onSubmit={e => handleSubmit(e)}
+    >
       <div className='input-group'>
         <input
           id='searchSeries'

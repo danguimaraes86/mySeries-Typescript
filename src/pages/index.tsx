@@ -1,17 +1,20 @@
 import Navbar from '../components/Navbar'
 import SeriesCard from '../components/SeriesCard'
+import LayoutWrapper from '../components/Utils/LayoutWrapper'
 import Spinner from '../components/Utils/Spinner'
-import TrendinWrapper from '../components/Utils/TrendinWrapper'
 import { useTrending } from '../hooks/useTrending'
+import appStrings from '../util/appStrings'
 
 function Home() {
+
+  const TRENDING_TITTLE = appStrings.TRENDING_TITLE
 
   const { trending, loading } = useTrending()
 
   return (
     <>
       <Navbar />
-      <TrendinWrapper>
+      <LayoutWrapper title={TRENDING_TITTLE}>
         {loading ? <Spinner /> :
           trending.map((series) => {
             return (
@@ -22,7 +25,7 @@ function Home() {
             )
           })
         }
-      </TrendinWrapper>
+      </LayoutWrapper>
     </>
   )
 }
