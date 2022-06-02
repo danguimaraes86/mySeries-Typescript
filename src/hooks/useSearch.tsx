@@ -10,8 +10,6 @@ export function useSearch(value: string) {
 
   const { data } = useSWR(`/api/search?value=${value}`, fetcher)
 
-  console.log(data);
-
   useEffect(() => {
     if (!data) return setLoading(true)
     setSearchResults(data.results.map((series: any): CardDetails => {
