@@ -12,10 +12,14 @@ import { SeriesDetails } from '../../interfaces/SeriesDetails'
 import { getYear } from '../../libs/dateParsing'
 import { handleSeriesPoster } from '../../libs/handleSeriesPoster'
 
+type Props = {
+  seriesDetails: SeriesDetails,
+  loading: boolean
+}
+
 function SeriesDetailsPage() {
-  const router = useRouter()
-  const { id } = router.query
-  const { seriesDetails, loading } = useSeriesDetails(id as string)
+  const { query: { id } } = useRouter()
+  const { seriesDetails, loading }: Props = useSeriesDetails(id as string)
 
   return (
     <>

@@ -4,8 +4,10 @@ import { CardDetails } from "../interfaces/CardDetails";
 import { fetcher } from "../libs/fetcher";
 
 export function useTrending() {
+
   const [trending, setTrending] = useState<CardDetails[]>([])
   const [loading, setLoading] = useState<boolean>(true)
+  
   const { data } = useSWR('/api/trending', fetcher)
 
   useEffect(() => {
