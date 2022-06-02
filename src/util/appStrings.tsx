@@ -1,6 +1,7 @@
 const appStrings = {
   APP_NAME: 'mySeries',
-  TRENDING_TITTLE: 'Em Alta'
+  TRENDING_TITLE: 'Em Alta',
+  RESULTS_TITLE: 'Resultados'
 }
 
 export default appStrings
