@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import Navbar from '../../components/Navbar'
 import FavoriteButton from '../../components/SeriesDetails/FavoriteButton'
+import NetworksAndStreaming from '../../components/SeriesDetails/NetworksAndStreaming'
 import SeriesOverview from '../../components/SeriesDetails/SeriesOverview'
 import SeriesTitle from '../../components/SeriesDetails/SeriesTitle'
 import DetailsWrapper from '../../components/Utils/DetailsWrapper'
@@ -45,6 +46,10 @@ function SeriesDetailsPage() {
                 first_air_date={seriesDetails.airDate}
                 number_of_seasons={seriesDetails.number_of_seasons}
                 status={seriesDetails.status}
+              />
+              <NetworksAndStreaming 
+                networks={seriesDetails.networks}
+                providers={seriesDetails.providers}
               />
             </RightColumn>
           </>
