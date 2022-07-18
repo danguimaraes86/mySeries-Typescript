@@ -1,7 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
-import Image from 'next/image';
 import { Network } from '../../../interfaces/Network';
 import { StreamingProvider } from '../../../interfaces/StreamingProvider';
+import NetworksDetails from './NetworksDetails';
+import StreamingDetails from './StreamingDetails';
 
 type Props = {
   networks: Network[],
@@ -14,38 +14,13 @@ export default function NetworksAndStreaming({ networks, providers }: Props) {
       <div className='row'>
 
         <div className='col-6 col-md-4 col-lg-3'>
-          <h6>Emissoras</h6>
-          <div className='d-flex flex-wrap'>
-            {networks.map((network, index) => {
-              return (
-                <img
-                  key={index}
-                  className='img-fluid me-2'
-                  style={{ height: '2em' }}
-                  src={`https://image.tmdb.org/t/p/w185/${network.logo_path}`}
-                  alt={network.name}
-                />
-              )
-            })}
-          </div>
+          <h6>Produção</h6>
+          <NetworksDetails networks={networks} />
         </div>
 
         <div className='col-6 col-md-4 col-lg-3'>
           <h6>Onde Assistir</h6>
-          <div className='d-flex flex-wrap'>
-            {providers.length === 0 ? <span className='lh-1'>Nenhum encontrado</span> :
-              providers.map((provider, index) => {
-                return (
-                  <img
-                    key={index}
-                    className='img-fluid me-2'
-                    style={{ height: '2em' }}
-                    src={`https://image.tmdb.org/t/p/w185/${provider.logo_path}`}
-                    alt={provider.name}
-                  />
-                )
-              })}
-          </div>
+          <StreamingDetails providers={providers} />
         </div>
 
       </div>
