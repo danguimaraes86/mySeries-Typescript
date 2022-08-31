@@ -12,7 +12,7 @@ export default function ProviderCards({ providers }: Props) {
       {providers.map((provider, index) => {
         return (
           <div className={`col-6 col-md-4 col-lg-2 text-center
-                              ${provider.type == 'ads' ? <FreeTag /> : ''}`} key={index} >
+                              ${provider.type == 'ads' ? 'position-relative' : ''}`} key={index} >
 
             {provider.type == 'ads' ? <FreeTag /> : ''}
 
