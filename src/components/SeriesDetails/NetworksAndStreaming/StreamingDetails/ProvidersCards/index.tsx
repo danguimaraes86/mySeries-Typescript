@@ -11,17 +11,18 @@ export default function ProviderCards({ providers }: Props) {
     <>
       {providers.map((provider, index) => {
         return (
-          <div className={`col-6 col-md-4 col-lg-2 text-center
-                              ${provider.type == 'ads' ? 'position-relative' : ''}`} key={index} >
+          <div key={index}
+            className={`col-6 col-md-4 col-lg-2 text-center
+              ${provider.type == 'ads' ? 'position-relative' : ''}`} >
 
-            {provider.type == 'ads' ? <FreeTag /> : ''}
-
+            {provider.type == 'ads' ? <FreeTag /> : null}
             <img
               className='img-fluid'
               style={{ height: '2em' }}
               src={`https://image.tmdb.org/t/p/w185/${provider.logo_path}`}
               alt={provider.name}
             />
+
           </div>
         )
       })}
