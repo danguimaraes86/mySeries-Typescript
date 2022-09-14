@@ -16,7 +16,7 @@ export default function SeriesOverview({ overview, type, first_air_date, number_
       <div className='row'>
         <div className='col-12'>
           <h6>Descrição</h6>
-          <p>{overview}</p>
+          <p>{overview.length > 0 ? overview : 'Nenhuma decrição disponível'}</p>
         </div>
       </div>
 
