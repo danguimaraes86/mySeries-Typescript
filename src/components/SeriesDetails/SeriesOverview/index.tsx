@@ -1,14 +1,17 @@
+import { Network } from '../../../interfaces/Network'
 import { dateLocale } from '../../../libs/dateParsing'
+import NetworksDetails from '../NetworksAndStreaming/NetworksDetails'
 
 type Props = {
   overview: string,
   type: string,
   first_air_date: string,
   number_of_seasons: number,
-  status: string
+  status: string,
+  networks: Network[]
 }
 
-export default function SeriesOverview({ overview, type, first_air_date, number_of_seasons, status }: Props) {
+export default function SeriesOverview({ overview, type, first_air_date, number_of_seasons, status, networks }: Props) {
 
   return (
     <div className='col-12 mb-2'>
@@ -16,7 +19,7 @@ export default function SeriesOverview({ overview, type, first_air_date, number_
       <div className='row'>
         <div className='col-12'>
           <h6>Descrição</h6>
-          <p>{overview}</p>
+          <p>{overview.length > 0 ? overview : 'Nenhuma decrição disponível'}</p>
         </div>
       </div>
 
@@ -36,6 +39,10 @@ export default function SeriesOverview({ overview, type, first_air_date, number_
         <div className='col-6 col-md-4 col-lg-3'>
           <h6>Situação</h6>
           <p>{status}</p>
+        </div>
+        <div className='col-6 col-md-4 col-lg-3'>
+          <h6>Produção</h6>
+          <NetworksDetails networks={networks} />
         </div>
       </div>
 

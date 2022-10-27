@@ -71,6 +71,16 @@ function handleStreamingProviders(providers: any): StreamingProvider[] {
   }
 
   // [TODO] Add Streaming Ads tier to Details page
+  if (providers.hasOwnProperty('ads')) {
+    providers.ads.forEach((provider: any) => {
+      const providerResult: StreamingProvider = {
+        name: provider.provider_name,
+        logo_path: provider.logo_path,
+        type: 'ads'
+      }
+      result.push(providerResult)
+    })
+  }
 
   return result
 }
