@@ -31,8 +31,7 @@ function SeriesDetailsPage() {
             <LeftColumn>
               {handleSeriesPoster(seriesDetails.poster, seriesDetails.name, 'details')}
               <FavoriteButton />
-              <NetworksAndStreaming 
-                networks={seriesDetails.networks}
+              <NetworksAndStreaming
                 providers={seriesDetails.providers}
               />
             </LeftColumn>
@@ -50,6 +49,7 @@ function SeriesDetailsPage() {
                 first_air_date={seriesDetails.airDate}
                 number_of_seasons={seriesDetails.number_of_seasons}
                 status={seriesDetails.status}
+                networks={seriesDetails.networks}
               />
 
             </RightColumn>
