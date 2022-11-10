@@ -1,6 +1,6 @@
 import { Network } from '../../../interfaces/Network'
 import { dateLocale } from '../../../libs/dateParsing'
-import NetworksDetails from '../NetworksAndStreaming/NetworksDetails'
+import NetworksDetails from '../NetworksDetails'
 
 type Props = {
   overview: string,
