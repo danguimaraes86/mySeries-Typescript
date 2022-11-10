@@ -47,7 +47,6 @@ function SeriesDetailsPage() {
               status={seriesDetails.status}
               networks={seriesDetails.networks}
             />
-
           </RightColumn>
         </>
       }

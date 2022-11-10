@@ -3,6 +3,7 @@ const appIcons = {
   SEARCH_ICON: 'bi bi-search',
   MORE_DETAILS_ICON: 'bi bi-arrow-up-right-square-fill',
   NO_POSTER_ICON: 'bi bi-image text-info',
-  FAVORITE_ICON: 'bi bi-bookmark-star'
+  FAVORITE_ICON: 'bi bi-bookmark-star',
+  LOGIN_ICON: 'bi bi-person-circle',
 }
 export default appIcons

@@ -1,4 +1,5 @@
 import Separator from '../Utils/Separator'
+import LoginButton from './LoginButton'
 import MySeriesLogo from './MySeriesLogo'
 import SearchForm from './SearchForm'
 
@@ -9,6 +10,7 @@ export default function Navbar() {
         <MySeriesLogo />
         <Separator />
         <SearchForm />
+        <LoginButton />
       </div>
     </nav>
   )
