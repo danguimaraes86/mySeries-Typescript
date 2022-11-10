@@ -1,4 +1,4 @@
-import { StreamingProvider } from "../../../../../interfaces/StreamingProvider"
+import { StreamingProvider } from "../../../../interfaces/StreamingProvider"
 import FreeTag from "../FreeTag"
 
 type Props = {

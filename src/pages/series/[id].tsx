@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import Navbar from '../../components/Navbar'
 import FavoriteButton from '../../components/SeriesDetails/FavoriteButton'
-import NetworksAndStreaming from '../../components/SeriesDetails/NetworksAndStreaming'
+import StreamingDetails from '../../components/SeriesDetails/StreamingDetails'
 import SeriesOverview from '../../components/SeriesDetails/SeriesOverview'
 import SeriesTitle from '../../components/SeriesDetails/SeriesTitle'
 import DetailsWrapper from '../../components/Utils/DetailsWrapper'
@@ -31,9 +31,7 @@ function SeriesDetailsPage() {
             <LeftColumn>
               {handleSeriesPoster(seriesDetails.poster, seriesDetails.name, 'details')}
               <FavoriteButton />
-              <NetworksAndStreaming
-                providers={seriesDetails.providers}
-              />
+              <StreamingDetails providers={seriesDetails.providers} />
             </LeftColumn>
 
             <RightColumn>
