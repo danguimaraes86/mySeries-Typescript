@@ -12,21 +12,18 @@ function Home() {
   const { trending, loading } = useTrending()
 
   return (
-    <>
-      <Navbar />
-      <LayoutWrapper title={TRENDING_TITTLE}>
-        {loading ? <Spinner /> :
-          trending.map((series) => {
-            return (
-              <SeriesCard
-                key={series.id}
-                series={series}
-              />
-            )
-          })
-        }
-      </LayoutWrapper>
-    </>
+    <LayoutWrapper title={TRENDING_TITTLE}>
+      {loading ? <Spinner /> :
+        trending.map((series) => {
+          return (
+            <SeriesCard
+              key={series.id}
+              series={series}
+            />
+          )
+        })
+      }
+    </LayoutWrapper>
   )
 }
 

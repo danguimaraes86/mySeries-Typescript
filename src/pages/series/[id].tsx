@@ -23,38 +23,35 @@ function SeriesDetailsPage() {
   const { seriesDetails, loading }: Props = useSeriesDetails(id as string)
 
   return (
-    <>
-      <Navbar />
-      <DetailsWrapper>
-        {loading ? <Spinner /> :
-          <>
-            <LeftColumn>
-              {handleSeriesPoster(seriesDetails.poster, seriesDetails.name, 'details')}
-              <FavoriteButton />
-              <StreamingDetails providers={seriesDetails.providers} />
-            </LeftColumn>
+    <DetailsWrapper>
+      {loading ? <Spinner /> :
+        <>
+          <LeftColumn>
+            {handleSeriesPoster(seriesDetails.poster, seriesDetails.name, 'details')}
+            {/* <FavoriteButton /> */}
+            <StreamingDetails providers={seriesDetails.providers} />
+          </LeftColumn>
 
-            <RightColumn>
-              <SeriesTitle
-                name={seriesDetails.name}
-                original_name={seriesDetails.original_name}
-                original_language={seriesDetails.original_language}
-                year={getYear(seriesDetails.airDate)}
-              />
-              <SeriesOverview
-                overview={seriesDetails.overview}
-                type={seriesDetails.type}
-                first_air_date={seriesDetails.airDate}
-                number_of_seasons={seriesDetails.number_of_seasons}
-                status={seriesDetails.status}
-                networks={seriesDetails.networks}
-              />
+          <RightColumn>
+            <SeriesTitle
+              name={seriesDetails.name}
+              original_name={seriesDetails.original_name}
+              original_language={seriesDetails.original_language}
+              year={getYear(seriesDetails.airDate)}
+            />
+            <SeriesOverview
+              overview={seriesDetails.overview}
+              type={seriesDetails.type}
+              first_air_date={seriesDetails.airDate}
+              number_of_seasons={seriesDetails.number_of_seasons}
+              status={seriesDetails.status}
+              networks={seriesDetails.networks}
+            />
 
-            </RightColumn>
-          </>
-        }
-      </DetailsWrapper>
-    </>
+          </RightColumn>
+        </>
+      }
+    </DetailsWrapper>
   )
 }
 

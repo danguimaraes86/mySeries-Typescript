@@ -14,12 +14,9 @@ function Search() {
   const { searchResults, loading } = useSearch(value as string)
 
   return (
-    <>
-      <Navbar />
-      <LayoutWrapper title={RESULTS_TITLE} >
-        {loading ? <Spinner /> : handleSearchResults(searchResults)}
-      </LayoutWrapper >
-    </>
+    <LayoutWrapper title={RESULTS_TITLE} >
+      {loading ? <Spinner /> : handleSearchResults(searchResults)}
+    </LayoutWrapper >
   )
 }
 
