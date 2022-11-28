@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import useSWR from "swr";
-import { CardDetails } from "../interfaces/CardDetails";
-import { fetcher } from "../libs/fetcher";
+import { useEffect, useState } from 'react';
+import useSWR from 'swr';
+import { CardDetails } from '../interfaces/CardDetails';
+import { fetcher } from '../libs/fetcher';
 
 export function useTrending() {
 

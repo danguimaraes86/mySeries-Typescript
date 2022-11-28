@@ -1,6 +1,6 @@
-import SeriesCard from "../components/SeriesCard"
-import { CardDetails } from "../interfaces/CardDetails"
-import appStrings from "../util/appStrings"
+import SeriesCard from '../components/SeriesCard'
+import { CardDetails } from '../interfaces/CardDetails'
+import appStrings from '../util/appStrings'
 
 export function handleSearchResults(searchResults: CardDetails[]) {
 

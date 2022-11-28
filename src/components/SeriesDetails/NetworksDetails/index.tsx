@@ -1,4 +1,4 @@
-import { Network } from "../../../interfaces/Network"
+import { Network } from '../../../interfaces/Network'
 
 type Props = {
   networks: Network[]

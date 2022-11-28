@@ -1,4 +1,4 @@
-import appIcons from "../../../util/appIcons"
+import appIcons from '../../../util/appIcons'
 
 export default function FavoriteButton() {
   const FAVORITE_ICON = appIcons.FAVORITE_ICON

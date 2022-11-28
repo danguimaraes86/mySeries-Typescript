@@ -1,6 +1,6 @@
-import { CardDetails } from "./CardDetails";
-import { Network } from "./Network";
-import { StreamingProvider } from "./StreamingProvider";
+import { CardDetails } from './CardDetails';
+import { Network } from './Network';
+import { StreamingProvider } from './StreamingProvider';
 
 export interface SeriesDetails extends CardDetails {
   original_language: string,

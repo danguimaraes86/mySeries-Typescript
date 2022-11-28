@@ -23,7 +23,7 @@ export default function StreamingDetails({ providers }: Props) {
             <ProviderCards providers={paidProviders} />
           </div>
           {freeProviders.length == 0 ? '' :
-            <div className="row g-1">
+            <div className='row g-1'>
               <ProviderCards providers={freeProviders} />
             </div>
           }

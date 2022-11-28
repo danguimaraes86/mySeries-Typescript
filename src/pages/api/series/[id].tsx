@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from "next"
-import { fetcher } from "../../../libs/fetcher"
+import { NextApiRequest, NextApiResponse } from 'next'
+import { fetcher } from '../../../libs/fetcher'
 
 export default async function seriesDetails(req: NextApiRequest, res: NextApiResponse) {
   const { id } = req.query

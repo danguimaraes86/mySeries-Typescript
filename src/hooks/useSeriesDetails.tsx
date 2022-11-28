@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import useSWR from "swr";
-import { Network } from "../interfaces/Network";
-import { SeriesDetails } from "../interfaces/SeriesDetails";
-import { StreamingProvider } from "../interfaces/StreamingProvider";
-import { fetcher } from "../libs/fetcher";
+import { useEffect, useState } from 'react';
+import useSWR from 'swr';
+import { Network } from '../interfaces/Network';
+import { SeriesDetails } from '../interfaces/SeriesDetails';
+import { StreamingProvider } from '../interfaces/StreamingProvider';
+import { fetcher } from '../libs/fetcher';
 
 export function useSeriesDetails(id: string) {
 

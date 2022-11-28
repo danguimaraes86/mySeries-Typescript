@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from 'axios'
 
 const customAxios = axios.create({
   baseURL: process.env.TMDB_BASEURL,
