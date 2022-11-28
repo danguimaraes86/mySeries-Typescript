@@ -1,6 +1,10 @@
-import { FormEvent, useState } from "react"
+import { FormEvent, useState } from 'react'
+import appIcons from '../../../util/appIcons'
 
 export default function LoginForm() {
+
+  const LOGIN_ICON = appIcons.LOGIN_ICON
+  const LOGIN_TEXT = 'Login'
 
   let [userEmail, setUserEmail] = useState('')
   let [userPassword, setUserPassword] = useState('')
@@ -31,9 +35,9 @@ export default function LoginForm() {
         <div className='text-center' >
           <button type='submit' className='btn btn-dark text-info w-100'>
             <span className='me-1'>
-              Login
+              {LOGIN_TEXT}
             </span>
-            <i className='bi bi-caret-right' />
+            <i className={LOGIN_ICON} />
           </button>
         </div>
       </div>
