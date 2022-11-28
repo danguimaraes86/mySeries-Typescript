@@ -1,4 +1,5 @@
-import ModalHeader from "./ModalHeader";
+import ModalBody from './ModalBody';
+import ModalHeader from './ModalHeader';
 
 export default function AuthenticationModal() {
   return (
@@ -6,6 +7,7 @@ export default function AuthenticationModal() {
       <div className='modal-dialog'>
         <div className='modal-content'>
           <ModalHeader />
+          <ModalBody />
         </div>
       </div>
     </div>
