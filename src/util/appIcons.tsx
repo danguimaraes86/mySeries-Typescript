@@ -6,6 +6,7 @@ const appIcons = {
   FAVORITE_ICON: 'bi bi-bookmark-star',
   USER_ICON: 'bi bi-person-circle',
   LOGIN_ICON: 'bi bi-caret-right',
-  CREATE_ACCOUNT_ICON: 'bi bi-person-plus-fill'
+  CREATE_ACCOUNT_ICON: 'bi bi-person-plus-fill',
+  
 }
 export default appIcons

@@ -1,9 +1,7 @@
+import RegistrationForm from '../../../AuthenticationForm/RegistrationForm';
 
 export default function RegistrationModalBody() {
-
   return (
-    <>
-      Crie sua conta
-    </>
+    <RegistrationForm />
   )
 }

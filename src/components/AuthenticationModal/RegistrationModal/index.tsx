@@ -1,5 +1,5 @@
-import RegistrationModalBody from "../ModalBody/RegistrationModalBody";
-import ModalHeader from "../ModalHeader";
+import RegistrationModalBody from '../ModalBody/RegistrationModalBody';
+import ModalHeader from '../ModalHeader';
 
 export default function RegistrationModal() {
 
@@ -12,6 +12,14 @@ export default function RegistrationModal() {
           <ModalHeader title={title} />
           <div className='modal-body'>
             <RegistrationModalBody />
+          </div>
+          
+          <div className='modal-footer justify-content-start'>
+            <button type='button' className='btn btn-info text-bg-info'
+              data-bs-toggle='modal'
+              data-bs-target='#loginModal'>
+              Voltar
+            </button>
           </div>
         </div>
       </div>
