@@ -1,4 +1,5 @@
 import { FormEvent, useState } from 'react'
+import { useInputValidation } from '../../../hooks/useInputValidation'
 import appIcons from '../../../util/appIcons'
 
 export default function LoginForm() {
@@ -6,27 +7,39 @@ export default function LoginForm() {
   const LOGIN_ICON = appIcons.LOGIN_ICON
   const LOGIN_TEXT = 'Login'
 
-  let [userEmail, setUserEmail] = useState<string>('')
-  let [userPassword, setUserPassword] = useState<string>('')
+  const [submitted, setSubmitted] = useState<boolean>(false)
+
+  const [userEmail, setUserEmail] = useState<string>('')
+  const [userEmailValid] = useInputValidation({ input: userEmail, submitted, validations: { lenght: 6, email: true } })
+  const [userPassword, setUserPassword] = useState<string>('')
+  const [userPasswordValid] = useInputValidation({ input: userPassword, submitted, validations: { lenght: 6 } })
 
   function handleLoginSubmit(e: FormEvent) {
     e.preventDefault()
-    console.log({
-      userEmail,
-      userPassword
-    })
+    setSubmitted(true)
+
+    if (submitted &&
+      ![userEmailValid, userPasswordValid].includes('is-invalid')
+    ) {
+      console.log({
+        userEmail,
+        userPassword
+      })
+    } else { console.log(`invalid`); }
   }
 
   return (
-    <form className='vstack gap-3' onSubmit={e => handleLoginSubmit(e)}>
+    <form className='vstack gap-3' onSubmit={e => handleLoginSubmit(e)} noValidate>
       <div className='form-floating'>
-        <input type='email' className='form-control' id='floatingInput' placeholder='name@example.com'
+        <input type='email' className={`form-control ${userEmailValid}`} id='floatingInput'
+          placeholder='name@example.com'
           value={userEmail}
           onChange={e => setUserEmail(e.target.value)} />
         <label htmlFor='floatingInput'>Email</label>
       </div>
       <div className='form-floating'>
-        <input type='password' className='form-control' id='floatingPassword' placeholder='Password'
+        <input type='password' className={`form-control ${userPasswordValid}`} id='floatingPassword'
+          placeholder='Password'
           value={userPassword}
           onChange={e => setUserPassword(e.target.value)} />
         <label htmlFor='floatingPassword'>Password</label>
