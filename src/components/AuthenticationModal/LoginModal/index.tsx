@@ -19,7 +19,7 @@ export default function LoginModal() {
           </div>
           <div className='modal-footer justify-content-center'>
             <button
-              type='submit' className='btn btn-info text-bg-info'
+              type='submit' className='btn btn-info'
               data-bs-toggle='modal'
               data-bs-target='#registrationModal'>
               <span className='me-2'>

@@ -13,9 +13,9 @@ export default function RegistrationModal() {
           <div className='modal-body'>
             <RegistrationModalBody />
           </div>
-          
-          <div className='modal-footer justify-content-start'>
-            <button type='button' className='btn btn-info text-bg-info'
+
+          <div className='modal-footer justify-content-between'>
+            <button type='button' className='btn btn-info'
               data-bs-toggle='modal'
               data-bs-target='#loginModal'>
               Voltar
