@@ -39,8 +39,7 @@ export default function RegistrationForm() {
     if (submitted &&
       ![userFirstNameValid, userLastNameValid,
         userEmailValid, userPasswordValid,
-        userConfirmationValid].includes('is-invalid')
-    ) {
+        userConfirmationValid].includes('is-invalid')) {
       console.log({
         userFirstNameInput,
         userLastNameInput,

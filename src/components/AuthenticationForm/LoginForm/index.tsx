@@ -19,8 +19,7 @@ export default function LoginForm() {
     setSubmitted(true)
 
     if (submitted &&
-      ![userEmailValid, userPasswordValid].includes('is-invalid')
-    ) {
+      ![userEmailValid, userPasswordValid].includes('is-invalid')) {
       console.log({
         userEmail,
         userPassword
