@@ -1,4 +1,10 @@
+import { createUserWithEmailAndPassword, getAuth, updateProfile } from 'firebase/auth'
 import app from '../libs/firebase'
-import { getAuth } from 'firebase/auth'
 
 const auth = getAuth(app)
+
+export const registration = async (email: string, password: string, displayName: string) => {
+  const { user } = await createUserWithEmailAndPassword(auth, email, password)
+  await updateProfile(user, { displayName })
+  return user
+}
