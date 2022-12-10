@@ -9,20 +9,20 @@ export default function RegistrationForm() {
 
   const [submitted, setSubmitted] = useState<boolean>(false)
 
-  const [userFirstNameInput, setUserFirstNameInput] = useState<string>('')
-  const [userFirstNameValid] = useInputValidation({ input: userFirstNameInput, submitted, validations: { lenght: 3 } })
+  const { input: userFirstNameInput, setInput: setUserFirstNameInput,
+    isValid: userFirstNameValid } = useInputValidation({ submitted, validations: { lenght: 3 } })
 
-  const [userLastNameInput, setUserLastNameInput] = useState<string>('')
-  const [userLastNameValid] = useInputValidation({ input: userLastNameInput, submitted, validations: { lenght: 3 } })
+  const { input: userLastNameInput, setInput: setUserLastNameInput,
+    isValid: userLastNameValid } = useInputValidation({ submitted, validations: { lenght: 3 } })
 
-  const [userEmailInput, setUserEmailInput] = useState<string>('')
-  const [userEmailValid] = useInputValidation({ input: userEmailInput, submitted, validations: { lenght: 6, email: true } })
+  const { input: userEmailInput, setInput: setUserEmailInput,
+    isValid: userEmailValid } = useInputValidation({ submitted, validations: { lenght: 6, email: true } })
 
-  const [userPasswordInput, setUserPasswordInput] = useState<string>('')
-  const [userPasswordValid] = useInputValidation({ input: userPasswordInput, submitted, validations: { lenght: 6 } })
+  const { input: userPasswordInput, setInput: setUserPasswordInput,
+    isValid: userPasswordValid } = useInputValidation({ submitted, validations: { lenght: 6 } })
 
-  const [userPasswordConfirmation, setUserPasswordConfirmation] = useState<string>('')
-  const [userConfirmationValid] = useInputValidation({ input: userPasswordConfirmation, submitted, validations: { lenght: 6, confirmation: userPasswordInput } })
+  const { input: userPasswordConfirmation, setInput: setUserPasswordConfirmation,
+    isValid: userConfirmationValid } = useInputValidation({ submitted, validations: { lenght: 6, confirmation: userPasswordInput } })
 
   function handleClearForm() {
     setUserFirstNameInput('')
@@ -36,10 +36,8 @@ export default function RegistrationForm() {
   function handleRegistrationSubmit(e: FormEvent) {
     e.preventDefault();
     setSubmitted(true);
-    if (submitted &&
-      ![userFirstNameValid, userLastNameValid,
-        userEmailValid, userPasswordValid,
-        userConfirmationValid].includes('is-invalid')) {
+    if (submitted && ![userFirstNameValid, userLastNameValid, userEmailValid,
+      userPasswordValid, userConfirmationValid].includes('is-invalid')) {
       console.log({
         userFirstNameInput,
         userLastNameInput,

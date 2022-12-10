@@ -9,17 +9,17 @@ export default function LoginForm() {
 
   const [submitted, setSubmitted] = useState<boolean>(false)
 
-  const [userEmail, setUserEmail] = useState<string>('')
-  const [userEmailValid] = useInputValidation({ input: userEmail, submitted, validations: { lenght: 6, email: true } })
-  const [userPassword, setUserPassword] = useState<string>('')
-  const [userPasswordValid] = useInputValidation({ input: userPassword, submitted, validations: { lenght: 6 } })
+  const { input: userEmail, setInput: setUserEmail,
+    isValid: userEmailValid } = useInputValidation({ submitted, validations: { lenght: 6, email: true } })
+
+  const { input: userPassword, setInput: setUserPassword,
+    isValid: userPasswordValid } = useInputValidation({ submitted, validations: { lenght: 6 } })
 
   function handleLoginSubmit(e: FormEvent) {
     e.preventDefault()
     setSubmitted(true)
 
-    if (submitted &&
-      ![userEmailValid, userPasswordValid].includes('is-invalid')) {
+    if (submitted && ![userEmailValid, userPasswordValid].includes('is-invalid')) {
       console.log({
         userEmail,
         userPassword
