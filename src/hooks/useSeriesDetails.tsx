@@ -3,7 +3,7 @@ import useSWR from 'swr';
 import { Network } from '../interfaces/Network';
 import { SeriesDetails } from '../interfaces/SeriesDetails';
 import { StreamingProvider } from '../interfaces/StreamingProvider';
-import { fetcher } from '../libs/fetcher';
+import { tmdbFetcher } from '../libs/fetcher';
 
 export function useSeriesDetails(id: string) {
 
@@ -22,7 +22,7 @@ export function useSeriesDetails(id: string) {
     providers: []
   })
   const [loading, setLoading] = useState<boolean>(true)
-  const { data } = useSWR(`/api/series/${id}`, fetcher)
+  const { data } = useSWR(`/api/series/${id}`, tmdbFetcher)
 
   useEffect(() => {
     if (!data) return setLoading(true)

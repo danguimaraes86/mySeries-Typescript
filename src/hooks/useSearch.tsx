@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 import { CardDetails } from '../interfaces/CardDetails';
-import { fetcher } from '../libs/fetcher';
+import { tmdbFetcher } from '../libs/fetcher';
 
 export function useSearch(value: string) {
 
   const [searchResults, setSearchResults] = useState<CardDetails[]>([])
   const [loading, setLoading] = useState<boolean>(true)
 
-  const { data } = useSWR(`/api/search?value=${value}`, fetcher)
+  const { data } = useSWR(`/api/search?value=${value}`, tmdbFetcher)
 
   useEffect(() => {
     if (!data) return setLoading(true)

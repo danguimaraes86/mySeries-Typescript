@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 import { CardDetails } from '../interfaces/CardDetails';
-import { fetcher } from '../libs/fetcher';
+import { tmdbFetcher } from '../libs/fetcher';
 
 export function useTrending() {
 
   const [trending, setTrending] = useState<CardDetails[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   
-  const { data } = useSWR('/api/trending', fetcher)
+  const { data } = useSWR('/api/trending', tmdbFetcher)
 
   useEffect(() => {
     if (!data) return setLoading(true)
