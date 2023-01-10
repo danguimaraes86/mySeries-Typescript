@@ -1,10 +1,9 @@
 import Link from 'next/link'
 import appIcons from '../../../util/appIcons'
-import appStrings from '../../../util/appStrings'
 
 export default function MySeriesLogo() {
 
-  const APP_NAME: string = appStrings.APP_NAME
+  const APP_NAME: string = 'mySeries'
   const APP_LOGO: string = appIcons.APP_LOGO
 
   return (

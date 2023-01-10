@@ -1,10 +1,9 @@
 import SeriesCard from '../components/SeriesCard'
 import { CardDetails } from '../interfaces/CardDetails'
-import appStrings from '../util/appStrings'
 
 export function handleSearchResults(searchResults: CardDetails[]) {
 
-  const NO_RESULTS_FOUND = appStrings.NO_RESULTS_FOUND
+  const NO_RESULTS_FOUND = 'Nenhum resultado encontrado'
 
   if (searchResults.length === 0) return (
     <div className='col'>

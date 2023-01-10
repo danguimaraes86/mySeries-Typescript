@@ -1,13 +1,11 @@
-import Navbar from '../components/Navbar'
 import SeriesCard from '../components/SeriesCard'
 import LayoutWrapper from '../components/Utils/LayoutWrapper'
 import Spinner from '../components/Utils/Spinner'
 import { useTrending } from '../hooks/useTrending'
-import appStrings from '../util/appStrings'
 
 function Home() {
 
-  const TRENDING_TITTLE = appStrings.TRENDING_TITLE
+  const TRENDING_TITTLE = 'Em Alta'
 
   const { trending, loading } = useTrending()
 
