@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, getAuth, updateProfile } from 'firebase/auth'
-import app from '../libs/firebase'
+import app from '../config/firebase'
 
 const auth = getAuth(app)
 
