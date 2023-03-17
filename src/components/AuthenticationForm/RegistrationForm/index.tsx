@@ -1,88 +1,76 @@
-import { FormEvent, useState } from 'react';
-import { useInputValidation } from '../../../hooks/useInputValidation';
+import React, { useState } from 'react';
 import appIcons from '../../../util/appIcons';
+
+type RegistrationFormInput = {
+  userFirstNameInput: string,
+  userLastNameInput: string,
+  userEmailInput: string,
+  userPasswordInput: string
+}
 
 export default function RegistrationForm() {
 
   const CREATE_ACCOUNT_ICON = appIcons.CREATE_ACCOUNT_ICON
   const CREATE_ACCOUNT_TEXT = 'Cadastrar'
 
-  const [submitted, setSubmitted] = useState<boolean>(false)
-
-  const { input: userFirstNameInput, setInput: setUserFirstNameInput,
-    isValid: userFirstNameValid } = useInputValidation({ submitted, validations: { lenght: 3 } })
-
-  const { input: userLastNameInput, setInput: setUserLastNameInput,
-    isValid: userLastNameValid } = useInputValidation({ submitted, validations: { lenght: 3 } })
-
-  const { input: userEmailInput, setInput: setUserEmailInput,
-    isValid: userEmailValid } = useInputValidation({ submitted, validations: { lenght: 6, email: true } })
-
-  const { input: userPasswordInput, setInput: setUserPasswordInput,
-    isValid: userPasswordValid } = useInputValidation({ submitted, validations: { lenght: 6 } })
-
-  const { input: userPasswordConfirmation, setInput: setUserPasswordConfirmation,
-    isValid: userConfirmationValid } = useInputValidation({ submitted, validations: { lenght: 6, confirmation: userPasswordInput } })
-
-  function handleClearForm() {
-    setUserFirstNameInput('')
-    setUserLastNameInput('')
-    setUserEmailInput('')
-    setUserPasswordInput('')
-    setUserPasswordConfirmation('')
-    setSubmitted(false)
+  const clearFormInput = {
+    userFirstNameInput: '',
+    userLastNameInput: '',
+    userEmailInput: '',
+    userPasswordInput: ''
   }
 
-  function handleRegistrationSubmit(e: FormEvent) {
-    e.preventDefault();
-    setSubmitted(true);
-    if (submitted && ![userFirstNameValid, userLastNameValid, userEmailValid,
-      userPasswordValid, userConfirmationValid].includes('is-invalid')) {
-      console.log({
-        userFirstNameInput,
-        userLastNameInput,
-        userEmailInput,
-        userPasswordInput,
-        userPasswordConfirmation
-      })
-    } else { console.log(`invalid`); }
+  const [registrationFormInput, setRegistrationFormInput] = useState<RegistrationFormInput>(clearFormInput)
+
+  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setRegistrationFormInput((prev) => ({ ...prev, [e.target.id]: e.target.value }))
+  }
+
+  function handleClearForm() {
+    setRegistrationFormInput(clearFormInput)
+  }
+
+  function handleRegistrationSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const formElement = e.target as HTMLFormElement
+    if (formElement.checkValidity()) {
+      console.log(registrationFormInput);
+    }
   }
 
   return (
-    <form className='vstack gap-3' onSubmit={e => handleRegistrationSubmit(e)} noValidate>
+    <form className='vstack gap-3' onSubmit={e => handleRegistrationSubmit(e)}>
       <div>
-        <label htmlFor='userFirsNameInput' className='form-label'>Nome</label>
+        <label htmlFor='userFirstNameInput' className='form-label'>Nome</label>
         <div className='input-group'>
           <input type='text' aria-label='Digite seu nome' placeholder='Digite seu nome'
-            className={`form-control ${userFirstNameValid}`} id='userFirsNameInput'
-            value={userFirstNameInput}
-            onChange={e => setUserFirstNameInput(e.target.value)} />
+            className='form-control' id='userFirstNameInput'
+            required minLength={3}
+            value={registrationFormInput.userFirstNameInput}
+            onChange={handleInputChange} />
           <input type='text' aria-label='Digite seu sobrenome' placeholder='Digite seu sobrenome'
-            className={`form-control ${userLastNameValid}`} id='userLastNameInput'
-            value={userLastNameInput}
-            onChange={e => setUserLastNameInput(e.target.value)} />
+            className='form-control' id='userLastNameInput'
+            required minLength={3}
+            value={registrationFormInput.userLastNameInput}
+            onChange={handleInputChange} />
         </div>
         <div className='form-text'> Mínimo de 3 caracteres</div>
       </div>
       <div>
         <label htmlFor='userEmailInput' className='form-label'>Email</label>
         <input type='email' aria-label='Digite seu email' placeholder='email@email.com'
-          className={`form-control ${userEmailValid}`} id='userEmailInput'
-          value={userEmailInput}
-          onChange={e => setUserEmailInput(e.target.value)} />
+          className='form-control' id='userEmailInput'
+          required
+          value={registrationFormInput.userEmailInput}
+          onChange={handleInputChange} />
       </div>
       <div>
         <label htmlFor='userPasswordInput' className='form-label'>Senha</label>
-        <div className='input-group'>
-          <input type='password' aria-label='Digite sua senha' placeholder='Digite sua senha'
-            className={`form-control ${userPasswordValid}`} id='userPasswordInput'
-            value={userPasswordInput}
-            onChange={e => setUserPasswordInput(e.target.value)} />
-          <input type='password' aria-label='Confirme sua senha' placeholder='Confirme sua senha'
-            className={`form-control ${userConfirmationValid}`} id='userPasswordConfirmation'
-            value={userPasswordConfirmation}
-            onChange={e => setUserPasswordConfirmation(e.target.value)} />
-        </div>
+        <input type='password' aria-label='Digite sua senha' placeholder='Digite sua senha'
+          className='form-control' id='userPasswordInput'
+          required minLength={6}
+          value={registrationFormInput.userPasswordInput}
+          onChange={handleInputChange} />
         <div className='form-text'> Mínimo de 6 caracteres</div>
       </div>
       <button type='submit' className='btn btn-dark text-info'>
