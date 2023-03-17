@@ -1,47 +1,52 @@
-import { FormEvent, useState } from 'react'
-import { useInputValidation } from '../../../hooks/useInputValidation'
+import { useState } from 'react'
 import appIcons from '../../../util/appIcons'
+
+type LoginFormInput = {
+  loginEmailInput: string,
+  loginPasswordInput: string
+}
 
 export default function LoginForm() {
 
   const LOGIN_ICON = appIcons.LOGIN_ICON
   const LOGIN_TEXT = 'Login'
 
-  const [submitted, setSubmitted] = useState<boolean>(false)
+  const clearFormInput = {
+    loginEmailInput: '',
+    loginPasswordInput: ''
+  }
 
-  const { input: userEmail, setInput: setUserEmail,
-    isValid: userEmailValid } = useInputValidation({ submitted, validations: { lenght: 6, email: true } })
+  const [loginFormInput, setLoginFormInput] = useState<LoginFormInput>(clearFormInput)
 
-  const { input: userPassword, setInput: setUserPassword,
-    isValid: userPasswordValid } = useInputValidation({ submitted, validations: { lenght: 6 } })
+  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setLoginFormInput((prev) => ({ ...prev, [e.target.id]: e.target.value }))
+  }
 
-  function handleLoginSubmit(e: FormEvent) {
+  function handleLoginSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setSubmitted(true)
-
-    if (submitted && ![userEmailValid, userPasswordValid].includes('is-invalid')) {
-      console.log({
-        userEmail,
-        userPassword
-      })
-    } else { console.log(`invalid`); }
+    const formElement = e.target as HTMLFormElement
+    if (formElement.checkValidity()) {
+      console.log(loginFormInput);
+    }
   }
 
   return (
-    <form className='vstack gap-3' onSubmit={e => handleLoginSubmit(e)} noValidate>
+    <form className='vstack gap-3' onSubmit={e => handleLoginSubmit(e)}>
       <div className='form-floating'>
-        <input type='email' className={`form-control ${userEmailValid}`} id='floatingInput'
+        <input type='email' className='form-control' id='loginEmailInput'
           placeholder='name@example.com'
-          value={userEmail}
-          onChange={e => setUserEmail(e.target.value)} />
-        <label htmlFor='floatingInput'>Email</label>
+          required
+          value={loginFormInput.loginEmailInput}
+          onChange={handleInputChange} />
+        <label htmlFor='loginEmailInput'>Email</label>
       </div>
       <div className='form-floating'>
-        <input type='password' className={`form-control ${userPasswordValid}`} id='floatingPassword'
+        <input type='password' className='form-control' id='loginPasswordInput'
           placeholder='Password'
-          value={userPassword}
-          onChange={e => setUserPassword(e.target.value)} />
-        <label htmlFor='floatingPassword'>Password</label>
+          required
+          value={loginFormInput.loginPasswordInput}
+          onChange={handleInputChange} />
+        <label htmlFor='loginPasswordInput'>Password</label>
       </div>
       <div className='text-center' >
         <button type='submit' className='btn btn-dark text-info w-100'>
