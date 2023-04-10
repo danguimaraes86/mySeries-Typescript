@@ -32,10 +32,7 @@ export default function RegistrationForm() {
 
   function handleRegistrationSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    const formElement = e.target as HTMLFormElement
-    if (formElement.checkValidity()) {
-      console.log(registrationFormInput);
-    }
+    console.log(registrationFormInput);
   }
 
   return (
@@ -59,8 +56,7 @@ export default function RegistrationForm() {
       <div>
         <label htmlFor='registrationEmailInput' className='form-label'>Email</label>
         <input type='email' aria-label='Digite seu email' placeholder='email@email.com'
-          className='form-control' id='registrationEmailInput'
-          required
+          className='form-control' id='registrationEmailInput' required
           value={registrationFormInput.registrationEmailInput}
           onChange={handleInputChange} />
       </div>

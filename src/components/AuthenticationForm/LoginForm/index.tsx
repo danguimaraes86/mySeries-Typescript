@@ -24,26 +24,21 @@ export default function LoginForm() {
 
   function handleLoginSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    const formElement = e.target as HTMLFormElement
-    if (formElement.checkValidity()) {
-      console.log(loginFormInput);
-    }
+    console.log(loginFormInput);
   }
 
   return (
     <form className='vstack gap-3' onSubmit={e => handleLoginSubmit(e)}>
       <div className='form-floating'>
         <input type='email' className='form-control' id='loginEmailInput'
-          placeholder='name@example.com'
-          required
+          placeholder='name@example.com' required
           value={loginFormInput.loginEmailInput}
           onChange={handleInputChange} />
         <label htmlFor='loginEmailInput'>Email</label>
       </div>
       <div className='form-floating'>
         <input type='password' className='form-control' id='loginPasswordInput'
-          placeholder='Password'
-          required
+          placeholder='Password' required
           value={loginFormInput.loginPasswordInput}
           onChange={handleInputChange} />
         <label htmlFor='loginPasswordInput'>Password</label>
